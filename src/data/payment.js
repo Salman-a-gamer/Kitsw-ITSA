@@ -24,9 +24,9 @@ export const PAYMENT_QR_CONFIG = {
     qrFallbackText: 'INNOVATION QR — UPLOAD REAL QR IMAGE',
   },
   'cyber-quest': {
-    qr: 'qr/cyber-quest-2026',
-    qrAlt: 'Cyber Quest payment QR code placeholder',
-    qrFallbackText: 'CYBER QUEST QR — UPLOAD REAL QR IMAGE',
+    qr: 'qr/technomyst-2026',
+    qrAlt: 'Technomyst payment QR for Mantha Hyndavi',
+    qrFallbackText: 'TECHNOMYST PAYMENT QR UNAVAILABLE',
   },
   'design-deploy': {
     qr: 'qr/design-deploy-2026',
