@@ -2,6 +2,7 @@ import EventCard from '../components/events/EventCard'
 import { eventsByDay } from '../data/events'
 import { SITE } from '../data/site'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
+import { REGISTRATIONS_OPEN } from '../../shared/registrationStatus'
 import s from './Events.module.css'
 
 const NUMBER_WORDS = [
@@ -42,7 +43,7 @@ export default function Events() {
               </h1>
               <p>
                 {totalWord} events covering technology, creativity, problem solving and
-                collaboration. Select an event to open its dedicated registration flow.
+                collaboration. {REGISTRATIONS_OPEN ? 'Select an event to open its dedicated registration flow.' : 'Sumshodhini 2026 has concluded. Thank you to everyone who participated.'}
               </p>
             </div>
 

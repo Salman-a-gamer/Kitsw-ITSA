@@ -14,6 +14,7 @@ import {
 
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import { registrationPath } from '../utils/registrationRoute'
+import { REGISTRATIONS_OPEN } from '../../shared/registrationStatus'
 import ImageWithFallback from '../components/ui/ImageWithFallback'
 
 import s from './Workshops.module.css'
@@ -113,8 +114,8 @@ export default function Workshops() {
 
             <a
               className={s.heroPoster}
-              href="https://kitsw-itsa.vercel.app/register?event=llm&from=workshops"
-              aria-label="Register for the Industry-Driven AI workshop"
+              href={REGISTRATIONS_OPEN ? '/register?event=llm&from=workshops' : '/gallery'}
+              aria-label={REGISTRATIONS_OPEN ? 'Register for the Industry-Driven AI workshop' : 'View the event gallery'}
             >
               <ImageWithFallback
                 imageKey={CURRENT.poster}
@@ -140,7 +141,7 @@ export default function Workshops() {
             <div className={s.statusPill}>
               <span aria-hidden="true" />
 
-              CURRENT WORKSHOP
+              {REGISTRATIONS_OPEN ? 'CURRENT WORKSHOP' : 'WORKSHOP CONCLUDED'}
             </div>
 
             <h2 id="current-title">
@@ -190,11 +191,11 @@ export default function Workshops() {
               </strong>
 
               <small>
-                {workshop.due.note}
+                {REGISTRATIONS_OPEN ? workshop.due.note : 'Registrations closed'}
               </small>
             </div>
 
-            <Link
+            {REGISTRATIONS_OPEN ? <Link
               className={
                 s.workshopRegisterBtn
               }
@@ -210,7 +211,7 @@ export default function Workshops() {
                 size="1.3em"
                 aria-hidden="true"
               />
-            </Link>
+            </Link> : <span className={s.workshopRegisterBtn} aria-disabled="true">Registrations closed</span>}
           </div>
         </article>
       </section>

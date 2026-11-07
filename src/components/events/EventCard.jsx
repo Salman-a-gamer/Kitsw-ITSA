@@ -59,7 +59,7 @@ export default function EventCard({ event, featured = false, from = 'events' }) 
         </Link>
       ) : (
         <span className={`${s.eventRegister} ${s.eventRegisterDisabled}`} aria-disabled="true">
-          Registration not configured
+          {event.status === 'closed' ? 'Registrations closed' : 'Registration not configured'}
         </span>
       )}
     </article>

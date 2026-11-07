@@ -1,4 +1,5 @@
-import { Navigate, useSearchParams } from 'react-router'
+import { Link, Navigate, useSearchParams } from 'react-router'
+import { REGISTRATIONS_OPEN, REGISTRATION_CLOSED_MESSAGE } from '../../shared/registrationStatus'
 import DaySelector from '../components/registration/DaySelector'
 import RegistrationView from '../components/registration/RegistrationView'
 import StatusMessage from '../components/ui/StatusMessage'
@@ -16,7 +17,21 @@ export default function Register() {
     route.view === 'form'
       ? `${route.event.title} Registration`
       : 'Register'
-  useDocumentTitle(title)
+  useDocumentTitle(REGISTRATIONS_OPEN ? title : 'Registrations closed')
+
+  if (!REGISTRATIONS_OPEN) {
+    return (
+      <div className={s.page}>
+        <section className={s.closedNotice} aria-labelledby="registrations-closed-title">
+          <h1 id="registrations-closed-title">Registrations closed</h1>
+          <StatusMessage tone="info" title="Event concluded">
+            {REGISTRATION_CLOSED_MESSAGE}
+          </StatusMessage>
+          <Link to="/gallery" className="btn btn-primary">View the event gallery</Link>
+        </section>
+      </div>
+    )
+  }
 
   if (route.view === 'redirect-events') {
     return <Navigate to="/events" replace />

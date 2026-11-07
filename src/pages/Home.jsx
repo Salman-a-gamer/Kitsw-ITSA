@@ -6,6 +6,7 @@ import Testimonials from '../components/home/Testimonials'
 
 import { LOGO, SITE } from '../data/site'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
+import { REGISTRATIONS_OPEN } from '../../shared/registrationStatus'
 
 import ImageWithFallback from '../components/ui/ImageWithFallback'
 
@@ -26,10 +27,10 @@ const ABOUT_POINTS = [
   'Develop communication, teamwork, creativity and leadership skills.',
 ]
 
-const WORKSHOP_TICKER_ITEMS = [
+const WORKSHOP_TICKER_ITEMS = REGISTRATIONS_OPEN ? [
   'Register for workshop now!',
   'CLICK NOW',
-]
+] : ['Sumshodhini 2026 has concluded', 'Thank you for participating!']
 
 export default function Home() {
   useDocumentTitle('IT Department | KITSW', { raw: true })
@@ -38,8 +39,8 @@ export default function Home() {
     <>
       <a
         className={s.workshopTicker}
-        href="https://kitsw-itsa.vercel.app/register?event=llm&from=workshops"
-        aria-label="Register for workshop now"
+        href={REGISTRATIONS_OPEN ? '/register?event=llm&from=workshops' : '/gallery'}
+        aria-label={REGISTRATIONS_OPEN ? 'Register for workshop now' : 'View the event gallery'}
       >
         <span className={s.workshopTickerTrack} aria-hidden="true">
           {[0, 1].map((group) => (

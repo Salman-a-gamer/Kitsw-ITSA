@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { Link } from 'react-router'
 import { Mail, MapPin, Users } from 'lucide-react'
 import { SITE } from '../data/site'
+import { REGISTRATIONS_OPEN } from '../../shared/registrationStatus'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import { useMagnetic } from '../hooks/useMagnetic'
 import s from './Contact.module.css'
@@ -68,13 +69,13 @@ export default function Contact() {
 
         <div className={s.cta}>
           <div>
-            <span>READY TO PARTICIPATE?</span>
+            <span>{REGISTRATIONS_OPEN ? 'READY TO PARTICIPATE?' : 'THANK YOU FOR PARTICIPATING'}</span>
             <h2>
-              Join the next <strong>experience.</strong>
+              {REGISTRATIONS_OPEN ? 'Join the next ' : 'Relive the '}<strong>experience.</strong>
             </h2>
           </div>
-          <Link ref={ctaRef} to="/register" className={s.ctaLink}>
-            Register Now <span aria-hidden="true">→</span>
+          <Link ref={ctaRef} to={REGISTRATIONS_OPEN ? '/register' : '/gallery'} className={s.ctaLink}>
+            {REGISTRATIONS_OPEN ? 'Register Now' : 'View Gallery'} <span aria-hidden="true">→</span>
           </Link>
         </div>
       </section>

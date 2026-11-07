@@ -18,6 +18,7 @@ import {
 } from 'lucide-react'
 import { getPaymentQr } from './payment'
 import { PPT_TEAM_FEE } from '../../shared/pptRegistration'
+import { REGISTRATIONS_OPEN } from '../../shared/registrationStatus'
 
 export const REGISTRATION_DAYS = {
   day1: {
@@ -55,9 +56,9 @@ export const REGISTRATION_DAYS = {
 }
 
 const openEventDefaults = {
-  status: 'open',
-  statusLabel: 'REGISTRATION OPEN',
-  registrationEnabled: true,
+  status: REGISTRATIONS_OPEN ? 'open' : 'closed',
+  statusLabel: REGISTRATIONS_OPEN ? 'REGISTRATION OPEN' : 'EVENT CONCLUDED',
+  registrationEnabled: REGISTRATIONS_OPEN,
 }
 
 export const EVENTS = [

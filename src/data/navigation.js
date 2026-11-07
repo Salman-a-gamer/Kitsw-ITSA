@@ -1,3 +1,5 @@
+import { REGISTRATIONS_OPEN } from '../../shared/registrationStatus'
+
 // Primary navigation (legacy navbar.js order).
 export const MAIN_NAV = [
   { to: '/', label: 'Home', end: true },
@@ -6,7 +8,7 @@ export const MAIN_NAV = [
   { to: '/gallery', label: 'Gallery' },
 ]
 
-export const REGISTER_LINK = { to: '/register', label: 'Register' }
+export const REGISTER_LINK = { to: '/register', label: REGISTRATIONS_OPEN ? 'Register' : 'Registrations closed' }
 
 // Footer columns for the site's secondary navigation.
 export const FOOTER_COLUMNS = [
