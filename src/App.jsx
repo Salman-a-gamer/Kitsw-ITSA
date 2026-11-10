@@ -35,6 +35,12 @@ import AdminLogin from "./pages/admin/AdminLogin";
 */
 
 const router = createBrowserRouter([
+  {
+    path: "hackathon/*",
+    lazy: async () => ({ Component: (await import("./pages/hackathon/Hackathon")).default }),
+    HydrateFallback: PageLoader,
+    errorElement: <RouteError />,
+  },
   /*
   |--------------------------------------------------------------------------
   | ADMIN

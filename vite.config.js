@@ -56,6 +56,7 @@ export default defineConfig(
 
       server: {
         proxy: {
+          "/api/hackathon": { target: "http://127.0.0.1:5051", changeOrigin: false },
           "/api": {
             target:
               env.DEV_API_PROXY_TARGET ||
@@ -76,6 +77,7 @@ export default defineConfig(
 
       preview: {
         proxy: {
+          "/api/hackathon": { target: "http://127.0.0.1:5051", changeOrigin: false },
           "/api": {
             target:
               env.DEV_API_PROXY_TARGET ||
